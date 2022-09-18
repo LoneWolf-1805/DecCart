@@ -6,10 +6,6 @@ import { Image } from 'next/image'
 const Sidebar = () => {
   return (
     <div >
-      <div >
-        hello
-      </div>
-
       <ConnectButton/>
     </div>
   )
