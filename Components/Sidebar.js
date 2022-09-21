@@ -3,6 +3,9 @@ import { ConnectButton } from 'web3uikit'
 import { Image } from 'next/image'
 import {DecCartContext} from '../context/DecCartContext'
 
+const isAuthenticated = false
+const username = 'dlao'
+
 const Sidebar = () => {
   const styles ={
     container:'h-full w-[300px] flex flex-col bg-[#fff] static',
@@ -10,24 +13,25 @@ const Sidebar = () => {
     profilePic:'rounded-3xl object-cover',
     profilePicContainer:'flex rounded-xl items-center justify-center w-full h-full mb-5',
     welcome:'text-md mb-2 font-bold text-2xl text-white',
+
   }
 
-  const {
-    isAuthenticated,
-    buyTokens,
-    getBalance,
-    nickname,
-    setNickname,
-    username,
-    handleSetUsername,
-  } = useContext(DecCartContext)
+  // const {
+  //   isAuthenticated,
+  //   buyTokens,
+  //   getBalance,
+  //   nickname,
+  //   setNickname,
+  //   username,
+  //   handleSetUsername,
+  // } = useContext(DecCartContext)
 
   return (
-    <div className='styles.container'>
-      <div className='styles.profile'>
+    <div className={styles.container}>
+      <div className={styles.profile}>
         {isAuthenticated && (
           <>
-            <div className='styles.profilePicContainer'>
+            <div className={styles.profilePicContainer}>
               <Image
               alt='profile'
               className='styles.profilePic'
@@ -42,8 +46,8 @@ const Sidebar = () => {
                   type='text'
                   placeholder='Username...'
                   className={usernameInput}
-                  value={nickname}
-                  onChange={e => setNickname(e.target.value)}
+                  // value={nickname}
+                  // onChange={e => setNickname(e.target.value)}
                 />
                 </div>
                 <button className='styles.setNickname'>
@@ -52,7 +56,7 @@ const Sidebar = () => {
               </>
             ):(
               <div>
-                <div className='styles.welcome'>Welcome {username}</div>
+                <div className={styles.welcome}>Welcome {username}</div>
               </div>
             )}
           </>
