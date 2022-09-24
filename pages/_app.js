@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { MoralisProvider } from 'react-moralis'
+import { DecCartProvider } from '../context/DecCartContext'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -7,7 +8,9 @@ function MyApp({ Component, pageProps }) {
   serverUrl={process.env.NEXT_PUBLIC_MORALIS_SERVER}
   appId={process.env.NEXT_PUBLIC_MORALIS_APP_ID}
   >
-  <Component {...pageProps} />
+    <DecCartProvider>
+      <Component {...pageProps} />
+    </DecCartProvider>
   </MoralisProvider>
   )
 }

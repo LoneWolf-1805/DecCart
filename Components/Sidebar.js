@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
 import { ConnectButton } from 'web3uikit'
-import { Image } from 'next/image'
+import Image from 'next/image'
+import Link  from 'next/link'
 import {DecCartContext} from '../context/DecCartContext'
-
-const isAuthenticated = false
-const username = 'dlao'
+import logo from '../assets/Amazon_logo_small.png'
+import logoFull from '../assets/Amazon_logo.png'
+import {Fabox} from 'react-icons/fa'
+import { BsFillBookmarkFill,BsPersonFill } from 'react-icons/bs'
+import { AiOutlineHistory} from 'react-icons/ai'
 
 const Sidebar = () => {
   const styles = {
@@ -23,15 +26,15 @@ const Sidebar = () => {
     setNickname: `text-lg font-bold flex flex-1 items-center mt-[20px] mb-[20px] text-white`,
   }
 
-  // const {
-  //   isAuthenticated,
-  //   buyTokens,
-  //   getBalance,
-  //   nickname,
-  //   setNickname,
-  //   username,
-  //   handleSetUsername,
-  // } = useContext(DecCartContext)
+  const {
+    isAuthenticated,
+    // buyTokens,
+    // getBalance,
+    nickname,
+    setNickname,
+    username,
+    handleSetUsername,
+  } = useContext(DecCartContext)
 
   return (
     <div className={styles.container}>
@@ -53,13 +56,16 @@ const Sidebar = () => {
                   <input
                   type='text'
                   placeholder='Username...'
-                  className={usernameInput}
-                  // value={nickname}
-                  // onChange={e => setNickname(e.target.value)}
+                  className={styles.usernameInput}
+                  value={nickname}
+                  onChange={e => setNickname(e.target.value)}
                 />
                 </div>
-                <button className={styles.setNickname}>
-                Set Nickname
+                <button
+                  className={styles.setNickname}
+                  onClick={handleSetUsername}
+                >
+                  Set Nickname
                 </button>
               </>
             ):(
@@ -69,9 +75,44 @@ const Sidebar = () => {
             )}
           </>
           )}
+          <div className={styles.connectButton}>
+            <ConnectButton/>
+          </div>
       </div>
-      <div className='styles.connectButton'>
-        <ConnectButton/>
+      <div className={styles.menu}>
+        <Link href={'/'}>
+          <div className={styles.menuItem}>
+              <Image
+              src={logo}
+              height= {30}
+              width={30}
+              className={styles.amazonLogo}
+              />
+              My Amazon
+              <br/> Board
+          </div>
+        </Link>
+            <div className={styles.menuItem}>
+              <Fabox/>
+              collections
+            </div>
+            <div className={styles.menuItem}>
+              <BsFillBookmarkFill/>
+              Book marks
+            </div>
+            <div className={styles.menuItem}>
+              <BsPersonFill/>
+              Saved
+            </div>
+          <Link href={"/history"}>
+              <div className={styles.menuItem}>
+               <AiOutlineHistory/>
+               Transaction History
+              </div>
+          </Link>
+      </div>
+      <div className={styles.companyName}>
+          <image src={logoFull} alt='DecCart' height={100} width={100}/>
       </div>
     </div>
   )
