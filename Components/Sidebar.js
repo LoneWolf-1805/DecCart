@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
 import { ConnectButton } from 'web3uikit'
 import Image from 'next/image'
-import Link  from 'next/link'
-import {DecCartContext} from '../context/DecCartContext'
+import Link from 'next/link'
+import { DecCartContext }from '../context/DecCartContext'
 import logo from '../assets/Amazon_logo_small.png'
 import logoFull from '../assets/Amazon_logo.png'
-import {Fabox} from 'react-icons/fa'
-import { BsFillBookmarkFill,BsPersonFill } from 'react-icons/bs'
-import { AiOutlineHistory} from 'react-icons/ai'
+import { Fabox } from 'react-icons/fa'
+import { BsFillBookmarkFill } from 'react-icons/bs'
+import { BsFillPersonFill } from 'react-icons/bs'
+import { AiOutlineHistory } from 'react-icons/ai'
 
 const Sidebar = () => {
   const styles = {
@@ -55,7 +56,7 @@ const Sidebar = () => {
                 <div className={styles.username}>
                   <input
                   type='text'
-                  placeholder='Username...'
+                  placeholder='Username....'
                   className={styles.usernameInput}
                   value={nickname}
                   onChange={e => setNickname(e.target.value)}
@@ -80,7 +81,7 @@ const Sidebar = () => {
           </div>
       </div>
       <div className={styles.menu}>
-        <Link href={'/'}>
+        <Link href='/'>
           <div className={styles.menuItem}>
               <Image
               src={logo}
@@ -101,10 +102,10 @@ const Sidebar = () => {
               Book marks
             </div>
             <div className={styles.menuItem}>
-              <BsPersonFill/>
+              <BsFillPersonFill/>
               Saved
             </div>
-          <Link href={"/history"}>
+          <Link href='/history'>
               <div className={styles.menuItem}>
                <AiOutlineHistory/>
                Transaction History
