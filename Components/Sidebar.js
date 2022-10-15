@@ -1,11 +1,10 @@
-import React, { useContext } from 'react'
+import React,{ useContext} from 'react'
 import { ConnectButton } from 'web3uikit'
-import Image from 'next/image'
+import { DecCartContext } from '../context/DecCartContext'
 import Link from 'next/link'
-import { DecCartContext }from '../context/DecCartContext'
-import logo from '../assets/Amazon_logo_small.png'
-import logoFull from '../assets/Amazon_logo.png'
-import { Fabox } from 'react-icons/fa'
+import Image from 'next/image'
+import { FaBox } from 'react-icons/fa'
+import a from '../assets/a.jpg'
 import { BsFillBookmarkFill } from 'react-icons/bs'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { AiOutlineHistory } from 'react-icons/ai'
@@ -84,7 +83,7 @@ const Sidebar = () => {
         <Link href='/'>
           <div className={styles.menuItem}>
               <Image
-              src={logo}
+              src={a}
               height= {30}
               width={30}
               className={styles.amazonLogo}
@@ -94,7 +93,7 @@ const Sidebar = () => {
           </div>
         </Link>
             <div className={styles.menuItem}>
-              <Fabox/>
+              <FaBox/>
               collections
             </div>
             <div className={styles.menuItem}>
@@ -113,7 +112,7 @@ const Sidebar = () => {
           </Link>
       </div>
       <div className={styles.companyName}>
-          <image src={logoFull} alt='DecCart' height={100} width={100}/>
+          <image src={a} alt='DecCart' height={100} width={100}/> 
       </div>
     </div>
   )
