@@ -1,30 +1,37 @@
 import { createContext,useState,useEffect } from 'react'
-import { useMoralis, useMoralisQuery} from 'react-moralis'
+import { useMoralis } from 'react-moralis'
 
 export const DecCartContext = createContext()
 
 export const DecCartProvider = ({children}) => {
-    const [username,setUsername] = useState('')
-    const [nickname,setNickname] = useState('')
+  const [nickname, setNickname] = useState('')
+  const [username, setUsername] = useState('')
 
     const {
-        authenticate,
         isAuthenticated,
         enableWeb3,
-        Moralis,
         user,
         isWeb3Enabled,
       } = useMoralis()
 
-      useEffect(()=>{
-        ;async(async()=>{
-            if(isAuthenticated){
-                const currentUsername = await user?.get('nickname')
-                setUsername(currentUsername)
-            }
-        })()
-      },[isAuthenticated,user,username])
+      // useEffect(async () => {
+      //   if (!isWeb3Enabled) {
+      //     await enableWeb3()
+      //   }
 
+      //   if (isAuthenticated) {
+      //     const currentUsername = await user?.get('nickname')
+      //     setUsername(currentUsername)
+      //   } 
+
+      // }, [
+      //   isWeb3Enabled,
+      //   isAuthenticated,
+      //   setUsername,
+      //   user,
+      //   username,
+      // ])
+      /*error in above part of useEffect*/
       const handleSetUsername = () => {
         if (user) {
           if (nickname) {
@@ -46,7 +53,8 @@ export const DecCartProvider = ({children}) => {
             nickname,
             setNickname,
             username,
-            setUsername
+            setUsername,
+            handleSetUsername,
         }}>
             {children}
         </DecCartContext.Provider>

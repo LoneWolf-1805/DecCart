@@ -9,7 +9,7 @@ export default function Home() {
   return(
     <div className = {styles.container}>
       <Sidebar/>
-      <Main/>
+      {/* <Main/> */}
     </div>
   )
 }
